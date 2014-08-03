@@ -1,0 +1,4 @@
+{
+	// env is a map of GOPATH, GOROOT and PATH variables
+	"env": { "GOPATH": "$HOME/go", "GOROOT": "$HOME/.gvm/gos/go1.2.1", "PATH": "$PATH:$GOPATH" },
+}

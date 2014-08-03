@@ -1,0 +1,5 @@
+{
+	// Example settings. Replace these with your own.
+	// e.g. "env": { "GOPATH": "$HOME/go", "GOROOT": "$HOME/.gvm/gos/go1.2.1", "PATH": "$PATH:$GOPATH" },
+	"env": {},
+}
