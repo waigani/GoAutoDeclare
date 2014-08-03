@@ -40,7 +40,7 @@ The default Go environment variables are set as folows:
 }
 ```
 
-Set your Go environment variables by copying the above into  `Preferences > Package Settings > GoAutoDeclare > Settings-User`. 
+Set your Go environment variables by copying the above into  `Preferences > Package Settings > GoAutoDeclare > Settings-User` and editing accordingly.
 
 
 Dependencies
