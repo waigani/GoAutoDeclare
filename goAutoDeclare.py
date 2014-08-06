@@ -9,7 +9,6 @@ import sublime, sublime_plugin, subprocess, re
 
 errs  = ["cannot assign to","no new variables on left side of"]
 
-
 class GoAutoDeclareCommand(sublime_plugin.TextCommand):
     """ Command gets called on save.
     """
@@ -31,18 +30,27 @@ class GoAutoDeclareCommand(sublime_plugin.TextCommand):
             p = v.text_point(int(g.group(1))-1, 0)
             line = v.line(p)
             lineContents = v.substr(line)
+            changed = False
             if err == 0:
-                lineContents = lineContents.replace("=",":=", 1)
+                if lineContents.find(":=") == -1 and lineContents.find("=") >=0:
+                    lineContents = lineContents.replace("=",":=", 1)
+                    changed = True
             else:
-                lineContents = lineContents.replace(":=", "=", 1)
-            self.view.replace(edit, line, lineContents) 
+                if lineContents.find(":="):
+                    lineContents = lineContents.replace(":=", "=", 1)
+                    changed = True
+            v.replace(edit, line, lineContents)
+            # TODO: save file
+            # if changed:
+            #     v.window().run_command("save")
+
             
 
 class GoAutoDeclareEventListener(sublime_plugin.EventListener):
     """ GoAutoDeclare formatter event listener class.
     """
 
-    def on_pre_save_async(self, view):
+    def on_post_save_async(self, view):
         """ Called just before the file is going to be saved.
         """
 
